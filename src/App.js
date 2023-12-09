@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import PokemonCard from './components/pokemonCard.js';
@@ -14,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        
+        Saved space here if something is needed in future
       </header>
       <div className="cards-section">
         {pokemonIds.map((pokemonId) => (
