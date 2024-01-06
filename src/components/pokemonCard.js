@@ -3,7 +3,9 @@ import axios from 'axios';
 import './pokemonCard.css';
 
 
-const PokemonCard = ({ pokemonId }) => {
+
+
+const PokemonCard = ({ pokemonId, onClick }) => {
   const [pokemonData, setPokemonData] = useState(null);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ const PokemonCard = ({ pokemonId }) => {
   }
 
   return (
-    <div className="pokemon-card">
+    <div className="pokemon-card" onClick={onClick}> //cia
       <div className="pokemon-info">
         <p>ID: {pokemonData.id}</p>
         <p>Weight: {pokemonData.weight}</p>
