@@ -1,32 +1,41 @@
 import './App.css';
-import React from 'react';
-import PokemonCard from './components/pokemonCard.js';
-import { useState } from 'react';
-
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import SingleCard from './pages/singleCard';
+import Navbar from './components/Navbar';
+import Home from './pages/home';
 
 function App() {
-
   const numberOfPokemons = 20;
-  const pokemonIdMainArray = Array.from({ length: numberOfPokemons }, (_, index) => index + 1); //cia
-  const [pokemonId, setPokemonId] = useState(pokemonIdMainArray); //cia
+  const pokemonIdMainArray = Array.from(
+    { length: numberOfPokemons },
+    (_, index) => index + 1
+  );
+  const [pokemonId, setPokemonId] = useState(pokemonIdMainArray);
 
-  //cia
   function deleteHandler(deleteID) {
-    setPokemonId(prevId => prevId.filter(id => id !== deleteID));
+    setPokemonId((prevId) => prevId.filter((id) => id !== deleteID));
   }
-  //cia
 
   return (
-    <div className="App">
-      <header className="App-header">
-        Saved space here if something is needed in future
-      </header>
-      <div className="cards-section" >
-        {pokemonId.map((pokemonId) => (
-          <PokemonCard key={pokemonId} pokemonId={pokemonId} onClick={() => deleteHandler(pokemonId)}/> //cia
-        ))}
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <Navbar />
+        </header>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home pokemonId={pokemonId} deleteHandler={deleteHandler} />
+            }
+          />
+          <Route path="/pokemon/:id" element={<SingleCard />} />
+          <Route path="/about" />
+          <Route path="/contact" />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 
