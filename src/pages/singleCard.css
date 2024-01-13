@@ -55,7 +55,9 @@
 .single-background {
   background-image: url(https://i.pinimg.com/originals/b8/83/fc/b883fc84b57235e6fe57f409716ae68d.gif);
   height: 100vh;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .basic-data p {
